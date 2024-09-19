@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Loan Site</title>
+    <title>Company Staff - Loan Site</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <!-- CSS here -->
@@ -18,70 +18,41 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Custom styles for contact page */
-        .contact-form {
+        /* Custom styles for company staff page */
+        .staff-member {
             background: #f9f9f9;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
         }
 
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .contact-form button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .contact-form button:hover {
-            background-color: #0056b3;
-        }
-
-        .contact-info ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .contact-info ul li {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .contact-info ul li i {
-            margin-right: 10px;
-            color: #007bff;
-        }
-
-        .map-area iframe {
-            border: 0;
-            width: 100%;
-            height: 450px;
-        }
-
-        .contact-image img {
+        .staff-member img {
             width: 100%;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .staff-member h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .staff-member p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .staff-member .social-icons a {
+            font-size: 20px;
+            margin: 0 10px;
+            color: #007bff;
+            transition: color 0.3s;
+        }
+
+        .staff-member .social-icons a:hover {
+            color: #0056b3;
         }
     </style>
 </head>
@@ -108,8 +79,8 @@
                                         <li><a href="services.html">Services</a></li>
                                         <li><a href="loanbook.html">Loanbook</a></li>
                                         <li><a href="payments.html">Payments</a></li>
-                                        <li><a href="company-staff.html">Company Staff</a></li>
-                                        <li><a href="contact.html" class="active">Contact</a></li>
+                                        <li><a href="company-staff.html" class="active">Company Staff</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -134,7 +105,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="hero-cap text-center pt-50">
-                        <h2>Contact Us</h2>
+                        <h2>Meet Our Team</h2>
                     </div>
                 </div>
             </div>
@@ -142,76 +113,67 @@
     </div>
     <!-- Hero End -->
 
-    <!-- Contact Us Area Start -->
-    <div class="contact-area section-padding30">
+    <!-- Company Staff Area Start -->
+    <div class="company-staff-area section-padding30">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10">
                     <!-- Section Title -->
                     <div class="section-title text-center mb-80">
-                        <span>Get in Touch</span>
-                        <h2>We’d Love to Hear From You!</h2>
-                        <p>Feel free to reach out to us with any questions or inquiries. Our team is here to help.</p>
+                        <span>Our Team</span>
+                        <h2>Meet the Experts Behind the Success</h2>
+                        <p>Our team of dedicated professionals is committed to delivering exceptional results. Get to know the faces behind our company.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                 <!-- Contact Image -->
-                 <div class="col-lg-4 col-md-12">
-                    <div class="contact-image">
-                        <img src="assets/img/about/about_lft.png" alt="Contact Image">
+                <!-- Staff Member 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="staff-member">
+                        <img src="assets/img/staff/staff1.jpg" alt="Staff Member 1">
+                        <h4>John Doe</h4>
+                        <p>Chief Executive Officer</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
-              
-                <!-- Contact Info -->
-                <div class="col-lg-4 col-md-12">
-                    <div class="contact-info">
-                        <h4>Contact Information</h4>
-                        <ul>
-                            <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, City, Country</li>
-                            <li><i class="fas fa-phone"></i> +254 566 545 4556</li>
-                            <li><i class="fas fa-envelope"></i> info@loansite.com</li>
-                            <li><i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</li>
-                        </ul>
+                <!-- Staff Member 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="staff-member">
+                        <img src="assets/img/staff/staff2.jpg" alt="Staff Member 2">
+                        <h4>Jane Smith</h4>
+                        <p>Chief Financial Officer</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
-
-                  <!-- Contact Form -->
-                  <div class="col-lg-4 col-md-12">
-                    <div class="contact-form">
-                        <form id="contact-form" action="mail-script.js" method="post">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <input type="text" name="name" placeholder="Your Name" required>
-                                </div>
-                                <div class="col-lg-12">
-                                    <input type="email" name="email" placeholder="Your Email" required>
-                                </div>
-                                <div class="col-lg-12">
-                                    <input type="text" name="subject" placeholder="Subject" required>
-                                </div>
-                                <div class="col-lg-12">
-                                    <textarea name="message" placeholder="Your Message" required></textarea>
-                                    <button type="submit" class="btn btn-primary">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
+                <!-- Staff Member 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="staff-member">
+                        <img src="assets/img/staff/staff3.jpg" alt="Staff Member 3">
+                        <h4>Emily Johnson</h4>
+                        <p>Head of Marketing</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
-               
+                <!-- Add more staff members as needed -->
             </div>
         </div>
     </div>
-    <!-- Contact Us Area End -->
-
-    <!-- Google Maps -->
-    <div class="map-area">
-        <div id="google-map">
-            <!-- Replace the src attribute with your own Google Maps Embed URL -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.589857751781!2d-122.4206750846814!3d37.77889827975983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808b73d88f95%3A0x22cda4cb7c1f4d85!2sSan%20Francisco%2C%20CA%2094150%2C%20USA!5e0!3m2!1sen!2s!4v1609822067172!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </div>
-    <!-- Google Maps End -->
+    <!-- Company Staff Area End -->
 
     <!-- Footer Start -->
     <footer>
