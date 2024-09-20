@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('your-background-image.jpg') no-repeat center center fixed; /* Replace with your background image */
+            background-size: cover;
+        }
+
+        /* Popup Container */
+        .login-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            z-index: 999;
+            display: none; /* Initially hidden */
+        }
+
+        /* Input Fields Styling */
+        .form-control {
+            margin-bottom: 20px;
+        }
+
+        /* Close Button Styling */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Overlay background when the popup is active */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            display: none; /* Initially hidden */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-popup {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="overlay"></div> <!-- Overlay -->
+
+<div class="login-popup">
+    <!-- Close Button -->
+    <button class="close-btn" onclick="closePopup()">×</button>
+
+    <!-- Login Form -->
+    <h3 class="text-center mb-4">Login</h3>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="national-id">National ID</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="national-id" name="national_id" placeholder="Enter your National ID" required>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" onclick="getCode()">Get Code</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="otp-section" style="display: none;">
+            <label for="otp">OTP</label>
+            <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP sent to your phone/email" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="display: none;" id="loginBtn">Login</button>
+    </form>
+</div>
+
+<!-- JS -->
+<script>
+    // Function to show the popup
+    function showPopup() {
+        document.querySelector('.login-popup').style.display = 'block';
+        document.querySelector('.overlay').style.display = 'block';
+    }
+
+    // Show the popup on first visit and after 30 seconds
+    window.onload = function() {
+        showPopup(); // Show popup immediately on first visit
+        setTimeout(showPopup, 30000); // Show popup again after 30 seconds
+    };
+
+    // Function to close popup and redirect to the home page
+    function closePopup() {
+        document.querySelector('.login-popup').style.display = 'none';
+        document.querySelector('.overlay').style.display = 'none';
+        // Redirect to the home page
+        window.location.href = 'index.html'; // Replace with your home page URL
+    }
+
+    // Function to simulate OTP request when "Get Code" is pressed
+    function getCode() {
+        let nationalId = document.getElementById('national-id').value;
+
+        if (nationalId) {
+            // Simulate sending OTP (In reality, use backend service to send OTP)
+            alert('OTP sent to the registered email and phone number for National ID: ' + nationalId);
+
+            // Show OTP field and Login button
+            document.getElementById('otp-section').style.display = 'block';
+            document.getElementById('loginBtn').style.display = 'block';
+        } else {
+            alert('Please enter your National ID');
+        }
+    }
+
+    // Example of handling OTP verification on form submission
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        let otp = document.getElementById('otp').value;
+        if (otp === '123456') { // Example OTP check
+            alert('Login successful!');
+            closePopup();
+        } else {
+            alert('Invalid OTP. Please try again.');
+        }
+    });
+</script>
+
+<!-- External JS files -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
