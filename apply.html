@@ -6,20 +6,70 @@
     <title>Loan Application Form</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('your-background-image.jpg') no-repeat center center fixed; /* Replace with your background image */
+            background-size: cover;
+        }
         .form-group.row .col-md-6 {
             padding-left: 15px;
             padding-right: 15px;
         }
         .employment-options {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Stack vertically on small screens */
             margin-bottom: 20px;
         }
-        .form-check-inline {
-            margin-right: 20px;
+        @media (min-width: 768px) {
+            .employment-options {
+                flex-direction: row; /* Stack horizontally on larger screens */
+                justify-content: space-between;
+            }
+            .form-check-inline {
+                margin-right: 20px;
+            }
         }
         .form-check-label {
             margin-left: 5px;
+        }
+        /* Popup Container */
+        .login-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            z-index: 999;
+            display: none; /* Initially hidden */
+        }
+        /* Overlay background when the popup is active */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            display: none; /* Initially hidden */
+        }
+        /* Signup Link Styling */
+        .signup-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .signup-link a:hover {
+            text-decoration: underline;
         }
         /* Make two fields share a row on large screens */
         @media (min-width: 768px) {
@@ -35,11 +85,36 @@
 </head>
 <body>
 
+<div class="overlay"></div> <!-- Overlay -->
+
+<!-- Login Popup -->
+<div class="login-popup">
+    <button class="close-btn" onclick="closePopup()">×</button>
+    <h3 class="text-center mb-4">Login</h3>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="national-id">National ID</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="national-id" name="national_id" placeholder="Enter your National ID" required>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" onclick="getCode()">Get Code</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="otp-section" style="display: none;">
+            <label for="otp">OTP</label>
+            <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP sent to your phone/email" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="display: none;" id="loginBtn">Login</button>
+    </form>
+    <div class="signup-link">
+        Don't have an account? <a href="signup.html">Sign Up</a>
+    </div>
+</div>
+
 <div class="container">
     <h2 class="my-4 text-center">Loan Application Form</h2>
     <form>
-
-        <!-- Employment Type Radio Buttons (Horizontal Alignment on Larger Screens) -->
         <div class="form-group">
             <label>Employment Status:</label>
             <div class="employment-options">
@@ -57,8 +132,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Conditional fields for Employed and Self-Employed (Initially hidden) -->
         <div id="employer-details" style="display:none;">
             <div class="form-group">
                 <label for="employer-name">Employer Name</label>
@@ -69,7 +142,6 @@
                 <input type="text" class="form-control" id="employer-contact" name="employer_contact" placeholder="Enter employer contact info">
             </div>
         </div>
-
         <div id="self-employed-details" style="display:none;">
             <div class="form-group">
                 <label for="business-name">Business Name</label>
@@ -80,8 +152,6 @@
                 <input type="text" class="form-control" id="business-type" name="business_type" placeholder="Enter type of business">
             </div>
         </div>
-
-        <!-- Personal Information (Two fields share one line on big screens) -->
         <div class="half-width">
             <div class="form-group">
                 <label for="full-name">Full Name</label>
@@ -92,8 +162,6 @@
                 <input type="text" class="form-control" id="id-number" name="id_number" required>
             </div>
         </div>
-
-        <!-- Loan Type and Loan Amount -->
         <div class="half-width">
             <div class="form-group">
                 <label for="loan-type">Loan Type</label>
@@ -110,8 +178,6 @@
                 <input type="number" class="form-control" id="loan-amount" name="loan_amount" required>
             </div>
         </div>
-
-        <!-- Loan Purpose and Repayment Period -->
         <div class="half-width">
             <div class="form-group">
                 <label for="loan-purpose">Loan Purpose</label>
@@ -122,33 +188,48 @@
                 <input type="number" class="form-control" id="repayment-period" name="repayment_period" required>
             </div>
         </div>
-
-        <!-- Terms and Conditions -->
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
             <label class="form-check-label" for="terms">I agree to the terms and conditions</label>
         </div>
-
-        <!-- Submit Button -->
         <button type="submit" class="btn btn-primary">Submit Application</button>
-
+        <div class="signup-link">
+            I've an account? <a href="login.html">Login</a>
+        </div>
     </form>
 </div>
 
-<!-- JS here -->
+<!-- JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Function to toggle employment details based on employment type
-    function toggleEmploymentType() {
-        const employed = document.getElementById('employed').checked;
-        const selfEmployed = document.getElementById('self-employed').checked;
+    // Function to show the popup
+    function showPopup() {
+        document.querySelector('.login-popup').style.display = 'block';
+        document.querySelector('.overlay').style.display = 'block';
+    }
 
-        // Show or hide employer/self-employed details based on employment type
-        document.getElementById('employer-details').style.display = employed ? 'block' : 'none';
-        document.getElementById('self-employed-details').style.display = selfEmployed ? 'block' : 'none';
+    // Function to close the popup
+    function closePopup() {
+        document.querySelector('.login-popup').style.display = 'none';
+        document.querySelector('.overlay').style.display = 'none';
+    }
+
+    // Toggle visibility of employer and self-employed details
+    function toggleEmploymentType() {
+        const employmentType = document.querySelector('input[name="employment_type"]:checked').value;
+        document.getElementById('employer-details').style.display = (employmentType === 'employed') ? 'block' : 'none';
+        document.getElementById('self-employed-details').style.display = (employmentType === 'self-employed') ? 'block' : 'none';
+    }
+
+    // Example function to handle the 'Get Code' button
+    function getCode() {
+        const nationalId = document.getElementById('national-id').value;
+        // Add your code logic here to send the code
+        console.log("Get code for National ID:", nationalId);
+        document.getElementById('otp-section').style.display = 'block';
+        document.getElementById('loginBtn').style.display = 'block'; // Show the login button after getting the code
     }
 </script>
-
 </body>
 </html>
